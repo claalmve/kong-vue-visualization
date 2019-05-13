@@ -70,8 +70,8 @@ export default {
 
     for (var key in counts) {
       var counter = 0;
-      for (var i=0; i<counts[key].length; i++) {
-        counter += counts[key][i];
+      for (var j=0; j<counts[key].length; j++) {
+        counter += counts[key][j];
       }
       var avg = counter / counts[key].length;
       this.lineData = [...this.lineData, [key, avg]];
