@@ -8,7 +8,9 @@ More formally: The user is a fellow developer that has to check on different iss
 
 ## Project setup
 
-To begin, you'll need to [clone this repo locally](https://help.github.com/en/articles/cloning-a-repository), and then run the following the command in terminal/command prompt!
+To begin, you'll need to [clone this repo locally](https://help.github.com/en/articles/cloning-a-repository), and then come back and run the following the command in terminal/command prompt!
+
+Now, if you don't have `npm`, or aren't sure if you have it, [click here](https://www.npmjs.com/get-npm) to install it, and then run the command below!
 
 ```
 npm install
