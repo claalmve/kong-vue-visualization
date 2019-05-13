@@ -21,12 +21,21 @@ export default {
   },
   data() {
     return {
+
+      // Keeps track of the current json file of data (JSON was constructed with a Python script in a
+      // Jupyter Notebook in the data folder)
       myJson: json,
+
+      // Keeps track of the past hour of requests (latest request - 1 hour)
       latestHour: "",
-      size: 1,
+
+      // Keeps track of the requests that were in the past hour of requests
       filteredItems: "hello",
-      // Array will be automatically processed with visualization.arrayToDataTable function
+      
+      // Constructs the data in the proper format for the GChart package
       lineData: [['Time', 'Latency']],
+      
+      // Chart configurations for good UI
       chartOptions: {
         series: {
           0: {color: '#20B2AA'}
@@ -49,12 +58,17 @@ export default {
       }
     }
   },
+
   created() {
+
+    // Finding the past hour marker, and filtering through all the requests that were within this past hour
     this.latestHour = new Date(this.myJson[this.myJson.length - 1].request_time);
     this.latestHour.setHours(this.latestHour.getHours() - 1);
     this.filteredItems = this.myJson.filter(item =>
       new Date(item.request_time) > this.latestHour
     )
+
+    // Keeps track of the latency for all requests within a 5 min interval within the latest hour (from above)
     var counts = {};
 
     for (var i=0; i<this.filteredItems.length; i++) {
@@ -68,6 +82,8 @@ export default {
       }
     }
 
+    // Finds the average latency of every 5 min interval and appends them to the this.lineData variable,
+    // which will be rendered above in the template to construct the proper line graph visualization.
     for (var key in counts) {
       var counter = 0;
       for (var j=0; j<counts[key].length; j++) {
