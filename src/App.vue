@@ -90,7 +90,7 @@ export default {
         counter += counts[key][j];
       }
       var avg = counter / counts[key].length;
-      this.lineData = [...this.lineData, [key, avg]];
+      this.lineData = [...this.lineData, [parseInt(key), avg]];
     }
 
   }
